@@ -12,12 +12,14 @@ public class Movie {
     String posterPath;
     String title;
     String overview;
+    String backdropPath;
 
     //constructor, which takes in json object and creates a Movie object
     public Movie(JSONObject jsonObject) throws JSONException {
         posterPath = jsonObject.getString("poster_path");
         title = jsonObject.getString("title");
         overview = jsonObject.getString("overview");
+        backdropPath = jsonObject.getString("backdrop_path");
     }
 
     public static List<Movie> fromJsonArray(JSONArray movieJsonArray) throws JSONException {
@@ -32,6 +34,9 @@ public class Movie {
         return String.format("https://image.tmdb.org/t/p/w342/%s", posterPath);
     }
 
+    public String getBackdropPath(){
+        return String.format("https://image.tmdb.org/t/p/w342/%s", backdropPath);
+    }
     public String getTitle() {
         return title;
     }
