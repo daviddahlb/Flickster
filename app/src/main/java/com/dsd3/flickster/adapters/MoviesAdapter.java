@@ -18,6 +18,8 @@ import com.dsd3.flickster.DetailActivity;
 import com.dsd3.flickster.R;
 import com.dsd3.flickster.models.Movie;
 
+import org.parceler.Parcels;
+
 import java.util.List;
 
 public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.ViewHolder>{
@@ -83,7 +85,7 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.ViewHolder
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(context, DetailActivity.class);
-                    intent.putExtra("title", movie.getTitle());
+                    intent.putExtra("movie", Parcels.wrap(movie));
                     context.startActivity(intent);
                 }
             });

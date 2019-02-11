@@ -3,16 +3,23 @@ package com.dsd3.flickster.models;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.parceler.Parcel;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Parcel
 public class Movie {
 
     String posterPath;
     String title;
     String overview;
     String backdropPath;
+    double voteAverage;
+
+    // empty constructor required for Parceler library
+    public Movie() {
+    }
 
     //constructor, which takes in json object and creates a Movie object
     public Movie(JSONObject jsonObject) throws JSONException {
@@ -20,6 +27,7 @@ public class Movie {
         title = jsonObject.getString("title");
         overview = jsonObject.getString("overview");
         backdropPath = jsonObject.getString("backdrop_path");
+        voteAverage = jsonObject.getDouble("vote_average");
     }
 
     public static List<Movie> fromJsonArray(JSONArray movieJsonArray) throws JSONException {
@@ -45,5 +53,7 @@ public class Movie {
         return overview;
     }
 
-
+    public double getVoteAverage() {
+        return voteAverage;
+    }
 }
